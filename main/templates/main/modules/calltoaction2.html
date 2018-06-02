@@ -9,7 +9,7 @@
             <div class="col-md-12">
 
                 <div class="heading_left heading">
-                    <h2>Сделайте заявку <span>сейчас</span></h2>
+                    <h2>Позвоните <span>нам</span></h2>
                     <div class="center_title"><span><i class="fa fa-wrench"></i></span></div>
                 </div>
 
@@ -19,10 +19,11 @@
 
                 <div class="call-to-action2">
 
-                    <h2>Звоните: +7 (843) 266-10-67</h2>
+                    <h2>Тел: 266-10-67</h2>
                     <p>Ваш специалист по ремонту холодильного оборудования</p>
-                    <a href="#" class="cd-btn third">Сделать заявку</a>
-                    <a href="#" class="cd-btn secondary">Задать вопрос</a>
+                    <a href="tel:+78432661067" class="cd-btn third">Позвонить</a>
+                    {% url "callback_index" as page_url %}
+                    <a href="{{ page_url }}" class="cd-btn secondary">Сделать заявку</a>
 
                 </div>
 

@@ -6,7 +6,7 @@ from news.models import New
 
 
 class MainPageView(TemplateView, CategoryListMixin):
-    template_name = "mainpage.html"
+    template_name = "main/mainpage.html"
     news = New.objects.all()[0:5]
     goods = Good.objects.filter(featured=True)
 

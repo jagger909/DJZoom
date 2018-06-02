@@ -175,7 +175,7 @@ Single slide style
 	background-color:transparent;
 	font-size: 16px;
 	text-align: center;
-	letter-spacing: 1px;
+    letter-spacing: 0px;
 	color: #fff;
 	text-transform: uppercase;
 	transition: color 1000ms, background-color 1500ms;

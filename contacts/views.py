@@ -3,4 +3,4 @@ from generic.mixins import CategoryListMixin
 
 
 class ContactsView(TemplateView, CategoryListMixin):
-    template_name = "contact-us.html"
+    template_name = "contacts/contact-us.html"

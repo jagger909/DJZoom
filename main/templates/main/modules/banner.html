@@ -143,19 +143,20 @@
 
 <!-- Banner -->
 <section id="banner-5" class="parallaxie">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <div class="banner_detail">
-          <h2>Ремонт холодильников</h2>
-          <div id="typewriter"></div>
-          <div class="banner_button">
-          	<a href="#." class="cd-btn">Онлайн заявка</a>
-          	<a href="#." class="cd-btn secondary">Узнать больше</a>
-          </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="banner_detail">
+                    <h2>Ремонт холодильников</h2>
+                    <div id="typewriter"></div>
+                    <div class="banner_button">
+                        <a href="tel:+78432661067" class="cd-btn">Позвонить</a>
+                        {% url "callback_index" as page_url %}
+                        <a href="{{ page_url }}" class="cd-btn secondary">Онлайн заявка</a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 <!-- /#Banner -->

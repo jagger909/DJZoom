@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-sm-6 col-md-3">
                 <div class="footer-box"><img alt="" src="{% static "images/logoWithe.png" %}">
-                    <p>Россия, г. Казань, проспект Победы 78.</p>
+                    <p>г. Казань, проспект Победы 78.</p>
                     <ul class="footer-link">
                         <li><i class="fa fa-phone"></i> <a href="#">+7 (843) 266-10-67</a></li>
                         <li><i class="fa fa-envelope-o"></i> <a href="#">info@antkzn.ru</a></li>
@@ -14,56 +14,63 @@
                     </ul>
                 </div>
             </div>
+
+            {#            <div class="col-sm-6 col-md-3">#}
+            {#                <div class="footer-box">#}
+            {#                    <h4>Наши <span>Услуги</span></h4>#}
+            {#                    <ul class="footer-link">#}
+            {#                        <li><a href="#">Oil Change</a></li>#}
+            {#                        <li><a href="#">Engine Service</a></li>#}
+            {#                        <li><a href="#">Wheel Alignment</a></li>#}
+            {#                        <li><a href="#">Looking Glass</a></li>#}
+            {#                        <li><a href="#">Coloring</a></li>#}
+            {#                    </ul>#}
+            {#                </div>#}
+            {#            </div>#}
+
             <div class="col-sm-6 col-md-3">
                 <div class="footer-box">
+
                     <h4>Полезные <span>ссылки</span></h4>
+
                     <ul class="footer-link">
-                        <li><a href="#">Главная</a></li>
-                        <li><a href="#">Блог</a></li>
-                        <li><a href="#">Услуги</a></li>
-                        <li><a href="#">О нас</a></li>
-                        <li><a href="#">Контакты</a></li>
+
+                        {% url "main" as page_url %}
+                        <li><a href="{{ page_url }}">Главная</a></li>
+
+                        {% url "aboutus_index" as page_url %}
+                        <li><a href="{{ page_url }}">О нас</a></li>
+
+                        {% url "contact_index" as page_url %}
+                        <li><a href="{{ page_url }}">Контакты</a></li>
+
                     </ul>
                 </div>
+
             </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="footer-box">
-                    <h4>Наши <span>Услуги</span></h4>
-                    <ul class="footer-link">
-                        <li><a href="#">Oil Change</a></li>
-                        <li><a href="#">Engine Service</a></li>
-                        <li><a href="#">Wheel Alignment</a></li>
-                        <li><a href="#">Looking Glass</a></li>
-                        <li><a href="#">Coloring</a></li>
-                    </ul>
-                </div>
-            </div>
+
             <div class="col-sm-6 col-md-3">
                 <div class="footer-box">
                     <h4>Часы <span>Работы</span></h4>
                     <div class="opening-hourse">
                         <ul class="footer-link">
-                            <li class="clearfix"><span> Пн - Вс : </span>
-                                <div class="value pull-right"> 7.00 - 19.00</div>
-                            </li>
-                            <li class="clearfix"><span> Пт : </span>
-                                <div class="value pull-right"> 15.00 - 19.00</div>
+                            <li class="clearfix"><span> Круглосуточно 24/7</span>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
+
         </div>
-        <div class="row p_b_50 footer-middle">
+
+        {% comment %}<div class="row p_b_50 footer-middle">
             <div class="col-md-12">
                 <div class="border-bottom"></div>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6">
                 <div class="footer-box">
                     <h5>Звоните <span>нам</span></h5>
-                    <div class="contact-number"> +7 (843) 266-10-67 <br>
-                        +7 (843) 266-10-67
-                    </div>
+                    <div class="contact-number"> +7 (843) 266-10-67</div>
                 </div>
             </div>
             <div class="col-md-3  col-sm-4 col-xs-6">
@@ -89,7 +96,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div>{% endcomment %}
     </div>
     <div class="footer-bottom">
         <div class="container">

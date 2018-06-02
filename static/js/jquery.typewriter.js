@@ -18,7 +18,7 @@
                 totalLength += settings.text[i].length;
             }
 
-            $(this).append('<span id="typewriter-prefix"></span>');
+            $(this).append('<span id="typewriter-prefix"></span><br>');
             $(this).append('<span id="typewriter-text"></span>');
             $(this).append('<span id="typewriter-suffix">&#9608;</span>');
 

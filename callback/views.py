@@ -3,4 +3,4 @@ from generic.mixins import CategoryListMixin
 
 
 class CallBackView(TemplateView, CategoryListMixin):
-    template_name = "appointment.html"
+    template_name = "callback/appointment.html"
