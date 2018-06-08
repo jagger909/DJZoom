@@ -9,8 +9,11 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
+from builtins import bool
 
 import os
+
+# import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,9 +22,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '187e-q_53u2wm2$gsz2wg1l!s#z0g#%1!7ri_=g((j$#sphim$'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '187e-q_53u2wm2$gsz2wg1l!s#z0g#%1!7ri_=g((j$#sphim$')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+#DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
@@ -42,6 +46,7 @@ INSTALLED_APPS = [
     'contacts.apps.ContactsConfig',
     'aboutus.apps.AboutusConfig',
     'callback.apps.CallbackConfig',
+    'scheduler.apps.SchedulerConfig',
     'imagepool.apps.ImagepoolConfig',
     'django.contrib.sites',
     'django_comments',
@@ -65,8 +70,7 @@ ROOT_URLCONF = 'DJZoom.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -90,6 +94,11 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'data/db.sqlite3'),
     }
 }
+
+# # Update database configuration from $DATABASE_URL.
+#
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators

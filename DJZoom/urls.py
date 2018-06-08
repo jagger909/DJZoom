@@ -32,6 +32,7 @@ urlpatterns = [
     path('contacts/', include("contacts.urls")),
     path('aboutus/', include("aboutus.urls")),
     path('callback/', include("callback.urls")),
+    path('scheduler/', include("scheduler.urls")),
     path('comments/', include("django_comments.urls")),
 ]
 
