@@ -56,10 +56,20 @@
         <div class="container">
 
             <!-- Start Atribute Navigation -->
-            <div class="attr-nav">
+            <div id="buttons-nav" class="attr-nav">
                 <ul>
-                    <li class="appintment-btn visible-xs"><a href="tel:+78432661067" class="cd-btn third"><i class="fa fa-mobile-phone"></i></a></li>
-                    <li class="appintment-btn"><a href="{% url 'callback_index' %}" class="cd-btn secondary">Сделать заявку</a></li>
+                    <li class="appointment-btn visible-xs">
+                        <a href="tel:+78432661067" class="cd-btn third">
+                            <i class="appointment-icon fa fa-phone"></i>
+                            <span class="">Позвонить</span>
+                        </a>
+                    </li>
+                    <li class="appointment-btn">
+                        <a href="{% url 'callback_index' %}" class="cd-btn secondary" data-toggle="modal" data-target="#gridSystemModal">
+                            <i class="appointment-icon fa fa-calendar"></i>
+                            <span class="appointment-btn-text">Заявка</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- End Atribute Navigation -->

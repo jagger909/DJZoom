@@ -1,8 +1,7 @@
-from django import forms
-from django.core.exceptions import ValidationError
 from datetime import datetime
+from django import forms
 
-from .models import Scheduler, TIME_CHOICES, TimeChoice
+from .models import Scheduler
 
 NAME_ERROR_LIST = {'required': 'Введите Ваше имя',
                    'min_length': 'Слишком короткое имя',
@@ -22,46 +21,56 @@ NAME_ERROR_LIST = {'required': 'Введите Ваше имя',
 class SchedulerForm(forms.ModelForm):
     class Meta:
         model = Scheduler
-        fields = ('username', 'honeypot', 'adres', 'telephone', 'comment', 'repair_date', 'repair_time')
+        fields = ('username', 'honeypot', 'address', 'telephone', 'comment', 'repair_date', 'repair_time')
 
     username = forms.CharField(label='Имя',
                                min_length=3,
                                max_length=20,
                                help_text='Введите Ваше имя',
                                error_messages=NAME_ERROR_LIST,
-                               widget=forms.TextInput)
+                               widget=forms.TextInput(attrs={'id': 'username_input',
+                                                             'required': True,
+                                                             'placeholder': 'Ваше имя...'}))
     honeypot = forms.CharField(required=False,
-                               label="")
-    adres = forms.CharField(label='Адрес',
-                            help_text='Ваш адрес',
-                            error_messages='',
-                            widget=forms.TextInput)
+                               label="",
+                               widget=forms.TextInput(attrs={'style': "display: None",}))
+    address = forms.CharField(label='Адрес',
+                              help_text='Ваш адрес',
+                              error_messages='',
+                              widget=forms.TextInput(attrs={'id': 'address_input',
+                                                            'required': True,
+                                                            'placeholder': 'Ваше имя...'}))
     telephone = forms.IntegerField(label='Телефон',
                                    required=True,
                                    help_text='Ваш номер телефона',
                                    error_messages='',
-                                   widget=forms.TextInput)
+                                   widget=forms.TextInput(attrs={'id': 'telephone_input',
+                                                                 'required': True,
+                                                                 'placeholder': 'Ваше номер телефона...'}))
     comment = forms.CharField(label='Комментарий',
                               help_text='Введите дополнительную информацию',
                               error_messages='',
-                              widget=forms.Textarea(attrs={'rows': 5, 'cols': 20}))
+                              widget=forms.Textarea(attrs={'rows': 5,
+                                                           'cols': 20,
+                                                           'id': 'comment_input',
+                                                           'placeholder': 'Введите дополнительную информацию...'}),
+                              required=False)
     repair_date = forms.DateField(label='Дата',
                                   help_text='Выберите дату ремонта',
                                   error_messages='',
-                                  widget=forms.DateInput(attrs={'type': 'Date'}))
-    repair_time = forms.ChoiceField(choices=[(tag.name, tag.value) for tag in TimeChoice],
-                                    label='Время',
-                                    help_text='Выберите время ремонта',
-                                    error_messages='',
-                                    widget=forms.Select)
+                                  widget=forms.DateInput(attrs={'type': 'Date',
+                                                                'id': 'date_input'}),
+                                  initial=datetime.now().date().strftime('%Y-%m-%d'))
+    repair_time = forms.ChoiceField(choices=Scheduler.TimeChoice.choices(),
+                                    widget=forms.RadioSelect())
 
-    def clean(self):
-        cleaned_data = super(SchedulerForm, self).clean()
-        if cleaned_data['username'] == 'JAGGER':
-            raise ValidationError('Опять ты приперся?', code='invalid')
-
-        # Проверка и возврат.
-        return cleaned_data
+    # def clean(self):
+    #     cleaned_data = super(SchedulerForm, self).clean()
+    #     if cleaned_data['username'] == 'JAGGER':
+    #         raise ValidationError('Опять ты приперся?', code='invalid')
+    #
+    #     # Проверка и возврат.
+    #     return cleaned_data
 
     # SUBJECT_ERROR_MESSAGE = 'Subject cant be named subject'
     # def clean_username(self):

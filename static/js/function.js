@@ -1,4 +1,4 @@
-jQuery(function($) {
+jQuery(function ($) {
     "use strict";
     /*----------------------------------------------------*/
     /*  LOADER
@@ -7,15 +7,15 @@ jQuery(function($) {
     jQuery(".preloader").delay(300).fadeOut("slow");
     jQuery("body").css('overflow-y', 'visible');
     jQuery("body").css('position', 'relative');
-    setTimeout(function() {
+    setTimeout(function () {
         jQuery('body').addClass('loaded');
     }, 1000);
-	
-	
+
+
     /*----------------------------------------------------*/
     /*  Scroll
     /*----------------------------------------------------*/
-    $(".scroll").on("click", function(event) {
+    $(".scroll").on("click", function (event) {
         event.preventDefault();
         $("html,body").animate({
             scrollTop: $(this.hash).offset().top
@@ -26,13 +26,13 @@ jQuery(function($) {
     /*----------------------------------------------------*/
     /*  Search Popup
     /*----------------------------------------------------*/
-    $(".search_btn").on("click", function(event) {
+    $(".search_btn").on("click", function (event) {
         event.preventDefault();
         $("#search").addClass("open");
         $("#search > form > input[type='search']").focus();
     });
-    $("#search, #search button.close").on("click keyup", function(event) {
-        if (event.target == this || event.target.className == "close" || event.keyCode == 27) {
+    $("#search, #search button.close").on("click keyup", function (event) {
+        if (event.target === this || event.target.className === "close" || event.keyCode === 27) {
             $(this).removeClass("open");
         }
     });
@@ -41,15 +41,16 @@ jQuery(function($) {
     /*----------------------------------------------------*/
     /* Newsletter popup
 	/*----------------------------------------------------*/
-    jQuery('#myModal').appendTo("body");
-
-    function show_modal() {
-        jQuery('#myModal').modal('show');
-    }
-    jQuery('#myModal').modal({
-        keyboard: false,
-        backdrop: false
-    });
+    // jQuery('#myModal').appendTo("body");
+    //
+    // function show_modal() {
+    //     jQuery('#myModal').modal('show');
+    // }
+    //
+    // jQuery('#myModal').modal({
+    //     keyboard: true,
+    //     backdrop: true
+    // });
 
 
     /*----------------------------------------------------*/
@@ -148,8 +149,8 @@ jQuery(function($) {
     /*----------------------------------------------------*/
     /*  Fun Fact
     /*----------------------------------------------------*/
-    $(".number-counters").appear(function() {
-        $(".number-counters [data-to]").each(function() {
+    $(".number-counters").appear(function () {
+        $(".number-counters [data-to]").each(function () {
             var e = $(this).attr("data-to");
             $(this).delay(6e3).countTo({
                 from: 1,
@@ -161,15 +162,15 @@ jQuery(function($) {
     });
 
 
-	/*----------------------------------------------------*/
+    /*----------------------------------------------------*/
     /*  Parallax
 	/*----------------------------------------------------*/
     $(".parallaxie").parallaxie({
         speed: 0.6,
         offset: 0,
     });
-	
-	
+
+
     /*----------------------------------------------------*/
     /*  Filter
 	/*----------------------------------------------------*/
@@ -180,7 +181,7 @@ jQuery(function($) {
         layoutMode: 'fitRows'
     });
 
-    $portfolio_selectors.on('click', function() {
+    $portfolio_selectors.on('click', function () {
         $portfolio_selectors.removeClass('active');
         $(this).addClass('active');
         var selector = $(this).attr('data-filter');
@@ -195,7 +196,7 @@ jQuery(function($) {
     /*  Selected
 	/*----------------------------------------------------*/
     jQuery('.office_menu').find('ul').hide();
-    jQuery('.office_menu').on('click', '.selected', function() {
+    jQuery('.office_menu').on('click', '.selected', function () {
         // jQuery(this).parent('.office_menu').find('ul').slideToggle();
         var checkClass = jQuery(this).hasClass('active');
         if (!checkClass) {
@@ -206,7 +207,7 @@ jQuery(function($) {
             jQuery(this).parent('.office_menu').find('ul').slideUp();
         }
     });
-    jQuery('.office_menu').on('click', 'ul a', function(e) {
+    jQuery('.office_menu').on('click', 'ul a', function (e) {
         e.preventDefault();
         jQuery('.addressbox').fadeOut();
         var clickDataVal = jQuery(this).data('office');
@@ -216,9 +217,9 @@ jQuery(function($) {
         jQuery(this).parents('.office_menu').find('.selected').removeClass('active');
         jQuery(this).parents('ul').slideUp();
 
-        jQuery('.addressbox').each(function() {
+        jQuery('.addressbox').each(function () {
             var elemDataVal = jQuery(this).data('office');
-            if (clickDataVal == elemDataVal) {
+            if (clickDataVal === elemDataVal) {
                 jQuery(this).delay(300).fadeIn();
             }
         });
@@ -228,11 +229,11 @@ jQuery(function($) {
     /*  Height Set
     /*----------------------------------------------------*/
     var highestBox = 0;
-        $('.contact-info .contact-info-box').each(function(){  
-        if($(this).height() > highestBox){  
-        highestBox = $(this).height();  
+    $('.contact-info .contact-info-box').each(function () {
+        if ($(this).height() > highestBox) {
+            highestBox = $(this).height();
         }
-    });    
+    });
     $('.contact-info .contact-info-box').height(highestBox);
 
     /*----------------------------------------------------*/
@@ -246,4 +247,16 @@ jQuery(function($) {
         blinkSpeed: 200
     });
 
+
 });
+
+
+// google map API
+var map;
+
+function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+    });
+}

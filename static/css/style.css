@@ -130,6 +130,10 @@ p {
     margin: 100px 0;
 }
 
+.honeypot {
+    display: none;
+}
+
 /* ================================= */
 /* ----------- Loader CSS ---------- */
 /* ================================= */
@@ -646,6 +650,18 @@ p {
     height: 30px;
     width: 32px;
     text-align: center;
+}
+
+#buttons-nav i {
+    width: 20px;
+    height: 20px;
+    font-size: 35px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#hero-btn-container {
+
 }
 
 /*--- Navigation ---*/
@@ -1758,10 +1774,15 @@ h2.tp-caption.tp-resizeme.style > span > span {
     color: #fff;
     border-radius: 10px;
     box-shadow: none;
-    height: 80px;
+    height: 130px;
     font-size: 13px;
     line-height: 20px;
     padding: 9px 12px;
+}
+
+.appointment-form ::placeholder {
+    color: #f0f0f0;
+    opacity: 1; /* Firefox */
 }
 
 .appointment-form .form-control:focus {
@@ -2197,6 +2218,17 @@ h2.tp-caption.tp-resizeme.style > span > span {
 }
 
 /* ================================= */
+/* ---------- Scheduler CSS --------- */
+/* ================================= */
+
+.calendar-day-header {
+    font-size: 19px;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: #7a9e9f;
+}
+
+/* ================================= */
 /* ---------- Services CSS --------- */
 /* ================================= */
 #Services .col-md-3,
@@ -2569,11 +2601,11 @@ h2.tp-caption.tp-resizeme.style > span > span {
 }
 
 #call-to-action {
-    background: #222;
+    background: #fff;
 }
 
 #call-to-action h2 {
-    color: #FFFFFF;
+    color: #222;
 }
 
 #call-to-action .heading {
@@ -2581,7 +2613,7 @@ h2.tp-caption.tp-resizeme.style > span > span {
 }
 
 .call-to-action2 h2 {
-    color: #FFFFFF;
+    color: #222;
     font-size: 36px;
     font-weight: 800;
     padding: 20px 0;
@@ -3560,7 +3592,7 @@ h2.tp-caption.tp-resizeme.style > span > span {
 
 .modal-open .modal {
     background: rgba(0, 0, 0, 0.7);
-    z-index: 999;
+    /*z-index: 999;*/
 }
 
 /*================================== */
@@ -5783,6 +5815,10 @@ form.contact-page .col-md-12 {
     .blog_button > a {
         font-size: 12px;
     }
+
+    .header_top_bar .column_left .fa {
+        display: none;
+    }
 }
 
 @media (max-width: 992px) {
@@ -5804,6 +5840,13 @@ form.contact-page .col-md-12 {
 
     p {
         font-size: 12px;
+    }
+
+    p.calendar-day-header {
+        font-size: 19px;
+        font-weight: 500;
+        text-transform: capitalize;
+        color: #7a9e9f;
     }
 
     nav.navbar.bootsnav ul.nav li.dropdown ul.dropdown-menu > li > a {
@@ -5848,13 +5891,13 @@ form.contact-page .col-md-12 {
     }
 
     header nav.navbar.bootsnav .navbar-toggle {
-        background-color: #d44457;
+        background-color: unset;
         border: none;
-        padding: 6px 12px;
-        font-size: 14px;
+        padding: 3px 0px;
+        font-size: 20px;
         position: relative;
         top: -5px;
-        color: #fff;
+        color: #7A9E9F;
         border-radius: 0;
         border: none;
     }
@@ -5935,6 +5978,31 @@ form.contact-page .col-md-12 {
 
     #header-7 .attr-nav > ul > li > a {
         margin-top: 4px;
+        padding: 10px 10px;
+    }
+
+    #header-7 .appointment-btn {
+        margin-left: 10px;
+    }
+
+    #header-7 .appointment-icon {
+        width: 12px;
+        height: 20px;
+        font-size: 24px;
+        margin-left: 5px;
+        margin-right: 12px;
+    }
+
+    #header-7 .appointment-btn-text {
+        margin: 0;
+    }
+
+    #header-7 .cd-btn {
+        /*height: 10em;*/
+    }
+
+    .btn, .navbar .navbar-nav > li > a.btn {
+        border-radius: 0;
     }
 
     .header_top_bar .column_details:nth-child(2) {
@@ -6024,6 +6092,14 @@ form.contact-page .col-md-12 {
 
     .feature_box {
         margin-bottom: 30px;
+    }
+
+}
+
+@media (min-width: 768px) {
+    .modal-dialog {
+        width: 650px;
+        margin: 30px auto;
     }
 }
 
@@ -6272,5 +6348,15 @@ form.contact-page .col-md-12 {
         font-size: 20px;
         font-weight: 600;
         text-shadow: 2px 0 2px #000;
+    }
+
+    .attr-nav {
+
+        right: 5px;
+    }
+
+    #header-7 nav.navbar.bootsnav.sticked .attr-nav > ul > li > a {
+
+        right: 30px;
     }
 }
