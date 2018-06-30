@@ -3,13 +3,13 @@
  =========================================================
  * Paper Bootstrap Wizard - v1.0.2
  =========================================================
- 
+
  * Product Page: https://www.creative-tim.com/product/paper-bootstrap-wizard
  * Copyright 2017 Creative Tim (http://www.creative-tim.com)
  * Licensed under MIT (https://github.com/creativetimofficial/paper-bootstrap-wizard/blob/master/LICENSE.md)
- 
+
  =========================================================
- 
+
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  */
 
@@ -18,25 +18,32 @@
 searchVisible = 0;
 transparent = true;
 
-$(document).ready(function () {
+$(function () {
 
     /*  Activate the tooltips      */
     $('[rel="tooltip"]').tooltip();
 
+    $('#username_input').focus();
     // Code for the Validator
     var $validator = $('.wizard-card form').validate({
         rules: {
-            firstname: {
+            username: {
                 required: true,
                 minlength: 3
             },
-            lastname: {
+            telephone: {
                 required: true,
-                minlength: 3
+                minlength: 7,
+                maxlength: 15,
             },
-            email: {
-                required: true
-            }
+            address: {
+                required: true,
+                minlength: 6
+            },
+            // times: {
+            //     required: true
+            // }
+
         },
     });
 
@@ -61,7 +68,6 @@ $(document).ready(function () {
             $width = 100 / $total;
 
             navigation.find('li').css('width', $width + '%');
-
         },
 
         onTabClick: function (tab, navigation, index) {
@@ -73,7 +79,6 @@ $(document).ready(function () {
             } else {
                 return true;
             }
-
         },
 
         onTabShow: function (tab, navigation, index) {
@@ -82,11 +87,17 @@ $(document).ready(function () {
 
             var $wizard = navigation.closest('.wizard-card');
 
-            // If it's the last tab then hide the last button and show the finish instead
+            //If it's the last tab then hide the last button and show the finish instead
             if ($current >= $total) {
                 $($wizard).find('.btn-next').hide();
+                $($wizard).find('.btn-finish').hide();
+                $($wizard).find('.btn-wd').hide();
+            }
+            if ($current === 2) {
+                $($wizard).find('.btn-next').hide();
                 $($wizard).find('.btn-finish').show();
-            } else {
+            }
+            if ($current === 1) {
                 $($wizard).find('.btn-next').show();
                 $($wizard).find('.btn-finish').hide();
             }
@@ -94,7 +105,6 @@ $(document).ready(function () {
             //update progress
             var move_distance = 100 / $total;
             move_distance = move_distance * (index) + move_distance / 2;
-
             $wizard.find($('.progress-bar')).css({width: move_distance + '%'});
             //e.relatedTarget // previous tab
 
@@ -104,32 +114,33 @@ $(document).ready(function () {
     });
 
 
-    // Prepare the preview for profile picture
+// Prepare the preview for profile picture
     $("#wizard-picture").change(function () {
         readURL(this);
     });
 
-    $('[data-toggle="wizard-radio"]').click(function () {
-        wizard = $(this).closest('.wizard-card');
-        $(wizard).find('[data-toggle="wizard-radio"]').removeClass('active');
-        $(this).addClass('active');
-        $(wizard).find('[type="radio"]').removeAttr('checked');
-        $(this).find('[type="radio"]').attr('checked', 'true');
-    });
+    // $('[data-toggle="wizard-radio"]').click(function () {
+    //     wizard = $(this).closest('.wizard-card');
+    //     wizard.find('[data-toggle="wizard-radio"]').removeClass('active');
+    //     $(this).addClass('active');
+    //     $(wizard).find('[type="radio"]').removeAttr('checked');
+    //     $(this).find('[type="radio"]').attr('checked', 'true');
+    // });
 
-    $('[data-toggle="wizard-checkbox"]').click(function () {
-        if ($(this).hasClass('active')) {
-            $(this).removeClass('active');
-            $(this).find('[type="checkbox"]').removeAttr('checked');
-        } else {
-            $(this).addClass('active');
-            $(this).find('[type="checkbox"]').attr('checked', 'true');
-        }
-    });
+    // $('[data-toggle="wizard-checkbox"]').click(function () {
+    //     if ($(this).hasClass('active')) {
+    //         $(this).removeClass('active');
+    //         $(this).find('[type="checkbox"]').removeAttr('checked');
+    //     } else {
+    //         $(this).addClass('active');
+    //         $(this).find('[type="checkbox"]').attr('checked', 'true');
+    //     }
+    // });
 
     $('.set-full-height').css('height', 'auto');
 
-});
+})
+;
 
 
 //Function to show image before upload

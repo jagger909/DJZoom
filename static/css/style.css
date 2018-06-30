@@ -2227,7 +2227,9 @@ h2.tp-caption.tp-resizeme.style > span > span {
     text-transform: capitalize;
     color: #7a9e9f;
 }
-
+.form-group {
+    /*height: 90px;*/
+}
 /* ================================= */
 /* ---------- Services CSS --------- */
 /* ================================= */

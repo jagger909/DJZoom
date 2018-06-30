@@ -171,12 +171,12 @@ Single slide style
 	border-radius:50px;
 	width: 200px;
 	margin-top: 5px;
-	border:2px solid #fff;
+	border:2px solid #7a9e9f;
 	background-color:transparent;
 	font-size: 16px;
 	text-align: center;
     letter-spacing: 0px;
-	color: #fff;
+	color: #7a9e9f;
 	text-transform: uppercase;
 	transition: color 1000ms, background-color 1500ms;
 }
