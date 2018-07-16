@@ -15,3 +15,6 @@ class MainPageView(TemplateView, CategoryListMixin):
         context["news"] = self.news
         context["goods"] = self.goods
         return context
+
+def ssl_check(request):
+    return 's52I8px7Dy1I2_1xIlvKts0l3msHfmX5qgnzfHeGq1M.7zLRdIzClZJQql4_ysFGlH3tXtkY7Pj8jmMMKlEIamg'
