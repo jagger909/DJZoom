@@ -18,7 +18,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
-from main.views import ssl_check
 
 urlpatterns = [
     path('adminka/', admin.site.urls),
@@ -34,7 +33,7 @@ urlpatterns = [
     path('callback/', include("callback.urls")),
     path('scheduler/', include("scheduler.urls")),
     path('comments/', include("django_comments.urls")),
-    path('.well-known/acme-challenge/s52I8px7Dy1I2_1xIlvKts0l3msHfmX5qgnzfHeGq1M/', ssl_check, name="ssl_check"),
+    path('.well-known/', include('main.urls')),
 
 ]
 
