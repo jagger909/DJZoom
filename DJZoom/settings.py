@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '187e-q_53u2wm2$gsz2wg1l!s#z0g#
 #DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['antkzn.ru', 'www.antkzn.ru', '127.0.0.1']
 
 # Application definition
 
