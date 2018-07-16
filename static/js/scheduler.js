@@ -144,7 +144,7 @@ $(function () {
 
                         console.log("Ключ = " + dates);
                         $("#calendar-box").append("<li class='calendar-day'>" + "<p class='calendar-day-header'>" + hum_date + "</p>" + "<div id='calendar-times-" + dates + "' class='btn-group btn-group-toggle' data-toggle='buttons'></div>" + "</li>");
-                        var sched_times = sched_data[dates];
+                        var sched_times = sortObject(sched_data[dates]);
                         for (times in sched_times) {
                             if (sched_times.hasOwnProperty(times)) {
                                 console.log("Значение = " + sched_times[times]);
