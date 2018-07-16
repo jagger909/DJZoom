@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView
 
+from scheduler.telegram import send_message
 from .forms import SchedulerForm
 from .models import Scheduler
 
@@ -107,7 +108,8 @@ def scheduler_add(request):
         if filtered_sched:
             return JsonResponse({"response": "Дата уже занята.", 'result': 'error'})
 
-
+        message = "*ЗАЯВКА С САЙТА*:" + "\n" + "*ИМЯ*: " + post_username + "\n" + "*ТЕЛЕФОН*: " + post_telephone + "\n" + "*АДРЕС*: " + post_address + "\n" + "*КОММЕНТАРИЙ*: " + post_comment + "\n" + "*ДАТА*: " + post_repair_date + " " + post_repair_time
+        send_message(message)
 
         sched = Scheduler(username=post_username,
                           address=post_address,
