@@ -122,7 +122,13 @@ $(function () {
                 // Получение свободных заявок
                 var calendar_box = $("#calendar-box");
                 calendar_box.empty();
-                var sched_data = data.busy_times;
+
+                function sortObject(o) {
+                    return Object.keys(o).sort().reduce((r, k) => (r[k] = o[k], r), {});
+                }
+
+                var sched_data = sortObject(data.busy_times);
+
 
                 for (dates in sched_data) {
                     if (sched_data.hasOwnProperty(dates)) {
