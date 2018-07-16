@@ -33,7 +33,6 @@ urlpatterns = [
     path('callback/', include("callback.urls")),
     path('scheduler/', include("scheduler.urls")),
     path('comments/', include("django_comments.urls")),
-    path('.well-known/', include('main.urls')),
 
 ]
 

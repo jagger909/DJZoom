@@ -57,6 +57,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'sslify.middleware.SSLifyMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -148,6 +149,7 @@ LOGOUT_URL = "logout"
 LOGIN_REDIRECT_URL = "main"
 
 SITE_ID = 1
+SECURE_SSL_REDIRECT = True
 
 THUMBNAIL_BASEDIR = "thumbnails"
 THUMBNAIL_DEFAULT_OPTIONS = {"detail": True}
