@@ -37,22 +37,35 @@ class SchedulerView(CreateView):
     form_class = SchedulerForm
     template_name = 'scheduler/scheduler2.html'
 
-
+TIME_INDEX = {
+    '08:00': 'T1',
+    '10:00':'T2',
+    '12:00': 'T3',
+    '14:00': 'T4',
+    '16:00': 'T5',
+    '18:00': 'T6',
+    # '20:00': 'T7',
+}
 def scheduler_free_time(request):
 
     rep_date = datetime.date.today()
 
     # rep_date = datetime.datetime.strptime('09-06-2018', "%d-%m-%Y")
-    num_days = 15
+    num_days = 10
     filtered_sched = Scheduler.objects.filter(repair_date__range=(rep_date, rep_date + datetime.timedelta(days=num_days)))
-
     date_list = [rep_date + datetime.timedelta(days=x) for x in range(0, num_days)]
     events = {}
     for date in date_list:
         busy_time = []
         date_time_list = {choices.name: choices.value for choices in Scheduler.TimeChoice}
-        date_busy_time = filtered_sched.filter(repair_date=date)
+        # Уберем прошедшие окна на сегодняшний день.
+        if date == datetime.date.today():
+            time_now = datetime.datetime.now().time().strftime('%H:%M')
+            for time_window in TIME_INDEX:
+                if time_window < time_now:
+                    date_time_list.pop(TIME_INDEX[time_window])
 
+        date_busy_time = filtered_sched.filter(repair_date=date)
         for time in date_busy_time:
             busy_time.append(time.repair_time)
 
@@ -93,8 +106,7 @@ def scheduler_add(request):
         if filtered_sched:
             return JsonResponse({"response": "Дата уже занята.", 'result': 'error'})
 
-        # char_list = ('1', '2', '3', '4', '5', '6', '7', '8', '9', '0')
-        # clear_telephone = "".join([i for i in post_telephone if i in char_list])
+
 
         sched = Scheduler(username=post_username,
                           address=post_address,
